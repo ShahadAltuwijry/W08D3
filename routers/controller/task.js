@@ -1,5 +1,5 @@
 const taskModel = require("./../../db/module/task");
-const userModel = require("./../../db/module/user");
+// const userModel = require("./../../db/module/user");
 
 //posting a new task
 const createTask = (req, res) => {
@@ -35,7 +35,7 @@ const allTasksByUserId = (req, res) => {
 
 //setting a task as completed. ps: its permenant
 const completed = (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; //this is the task id
 
   taskModel
     .findOneAndUpdate(
@@ -53,7 +53,7 @@ const completed = (req, res) => {
 
 //setting a task as deleted. ps: its permenant
 const softDel = (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; //this is the task id
 
   taskModel
     .findOneAndUpdate({ _id: id }, { $set: { isDeleted: true } }, { new: true })
