@@ -3,11 +3,10 @@ const userModel = require("./../../db/module/user");
 
 //posting a new task
 const createTask = (req, res) => {
-  const { id } = req.params;
   const { name } = req.body,
     newTask = new taskModel({
       name,
-      userId: id,
+      userId: req.addedToken.id,
     });
 
   newTask
@@ -23,10 +22,8 @@ const createTask = (req, res) => {
 
 //getting all tasks even if its deleted or completed
 const allTasksByUserId = (req, res) => {
-  const { id } = req.params;
-
   taskModel
-    .find({ userId: id })
+    .find({ userId: req.addedToken.id })
     .then((result) => {
       res.status(200).json(result);
       console.log(result);
@@ -38,7 +35,7 @@ const allTasksByUserId = (req, res) => {
 
 //setting a task as completed. ps: its permenant
 const completed = (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   taskModel
     .findOneAndUpdate(
@@ -56,7 +53,7 @@ const completed = (req, res) => {
 
 //setting a task as deleted. ps: its permenant
 const softDel = (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
 
   taskModel
     .findOneAndUpdate({ _id: id }, { $set: { isDeleted: true } }, { new: true })
@@ -70,8 +67,6 @@ const softDel = (req, res) => {
 
 //getting only existing and uncompleted tasks
 const tasksByUserId = (req, res) => {
-  const { id } = req.params;
-
   taskModel
     .find({ userId: id, isCompleted: false, isDeleted: false })
     .then((result) => {
@@ -85,10 +80,8 @@ const tasksByUserId = (req, res) => {
 
 //getting only completed tasks
 const getCompTasks = (req, res) => {
-  const { id } = req.params;
-
   taskModel
-    .find({ userId: id, isCompleted: true })
+    .find({ userId: req.addedToken.id, isCompleted: true })
     .then((result) => {
       res.status(200).json(result);
       console.log(result);
@@ -100,8 +93,6 @@ const getCompTasks = (req, res) => {
 
 //getting deleted tasks
 const getDelTasks = (req, res) => {
-  const { id } = req.params;
-
   taskModel
     .find({ userId: id, isDeleted: true })
     .then((result) => {

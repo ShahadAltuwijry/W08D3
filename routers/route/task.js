@@ -1,5 +1,5 @@
 const express = require("express");
-// const authentication = require("./../middlewares/authentication");
+const authentication = require("./../middlewares/authentication");
 const tasksRouter = express.Router();
 const {
   createTask,
@@ -11,12 +11,12 @@ const {
   getCompTasks,
 } = require("./../controller/task");
 
-tasksRouter.post("/task/:id", createTask); //posting
-tasksRouter.put("/completed", completed); //marking as complete
-tasksRouter.put("/delete", softDel); //soft deleting
-tasksRouter.get("/Tasks/:id", tasksByUserId); //get uncomp undel user tasks
-tasksRouter.get("/allTasks/:id", allTasksByUserId); //get user existing uncompleted tasks
-tasksRouter.get("/delTasks/:id", getDelTasks); //get user deleted tasks
-tasksRouter.get("/compTasks/:id", getCompTasks); //get all completed tasks
+tasksRouter.post("/task/:", authentication, createTask); //posting
+tasksRouter.put("/completed/:d", authentication, completed); //marking as complete
+tasksRouter.put("/delete/:id", authentication, softDel); //soft deleting
+tasksRouter.get("/Tasks", authentication, tasksByUserId); //get uncomp undel user tasks
+tasksRouter.get("/allTasks", authentication, allTasksByUserId); //get user existing uncompleted tasks
+tasksRouter.get("/delTasks", authentication, getDelTasks); //get user deleted tasks
+tasksRouter.get("/compTasks", authentication, getCompTasks); //get all completed tasks
 
 module.exports = tasksRouter;
