@@ -1,6 +1,18 @@
+# To Do CRUD operation
+
+In this project we worked on making the basic codes of a full To Do list CRUD opration, plus registration & loging in.
+There's two roles for registration:
+
+- Admin.
+- User.
+
+  both roles can create, read, update and delete their own added Tasks.
+  Whats differante about this project is that Admins can see all Users data (<ins>user data</ins> ***not*** tasks) and can also Delete any user using the UserId.
+
 # Registration & login Authentication
 
 This project will help you set the basic steps for authenticating users securely useing:
+
 - json web token
 - bcrypt.
 
@@ -33,4 +45,3 @@ _already have your own schemas and just need the Authenticating part? you only n
 - [mongoose ](https://www.npmjs.com/package/mongoose)
 - [bcrypt docs](https://www.npmjs.com/package/bcrypt)
 - [json web token docs](https://www.npmjs.com/package/jsonwebtoken)
-
