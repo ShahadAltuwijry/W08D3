@@ -83,35 +83,35 @@ const tasksByUserId = (req, res) => {
     });
 };
 
-//getting only existing and uncompleted tasks
-// const tasksByUserId = (req, res) => {
-//   const { id } = req.params;
+//getting only completed tasks
+const getCompTasks = (req, res) => {
+  const { id } = req.params;
 
-//   taskModel
-//     .find({ userId: id, isCompleted: false, isDeleted: false })
-//     .then((result) => {
-//       res.status(200).json(result);
-//       console.log(result);
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-// };
+  taskModel
+    .find({ userId: id, isCompleted: true })
+    .then((result) => {
+      res.status(200).json(result);
+      console.log(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
 
-// //getting deleted tasks
-// const getDelTasks = (req, res) => {
-//   const { id } = req.params;
+//getting deleted tasks
+const getDelTasks = (req, res) => {
+  const { id } = req.params;
 
-//   taskModel
-//     .find({ userId: id, isCompleted: false, isDeleted: false })
-//     .then((result) => {
-//       res.status(200).json(result);
-//       console.log(result);
-//     })
-//     .catch((err) => {
-//       res.send(err);
-//     });
-// };
+  taskModel
+    .find({ userId: id, isDeleted: true })
+    .then((result) => {
+      res.status(200).json(result);
+      console.log(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
 
 module.exports = {
   createTask,
@@ -119,5 +119,6 @@ module.exports = {
   completed,
   softDel,
   tasksByUserId,
-  // getDelTasks,
+  getCompTasks,
+  getDelTasks,
 };
