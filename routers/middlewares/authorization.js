@@ -1,9 +1,10 @@
+const role = require("./../../db/module/role");
 const roleModel = require("./../../db/module/role");
 
 const authorization = async (req, res, next) => {
   try {
-    console.log(req);
-    const roleId = req.token.role;
+    // console.log(req.addedToken);
+    const roleId = req.addedToken.role;
 
     const result = await roleModel.findById(roleId);
 

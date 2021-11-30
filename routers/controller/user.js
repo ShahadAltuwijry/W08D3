@@ -1,6 +1,7 @@
 const userModel = require("./../../db/module/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const SALT = Number(process.env.SALT);
 const secret = process.env.SECRETKEY;
@@ -30,6 +31,7 @@ const login = (req, res) => {
   const { email, password } = req.body;
 
   userModel.findOne({ email }).then(async (result) => {
+    // console.log(result, "res");
     if (result) {
       if (email === result.email) {
         const savedPassword = await bcrypt.compare(password, result.password);
@@ -50,6 +52,30 @@ const login = (req, res) => {
   });
 };
 
+const getUsers = (req, res) => {
+  userModel
+    .find({})
+    .then((result) => {
+      res.status(200).json(result);
+      console.log(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
 
+const deleteUser = (req, res) => {
+  const { id } = req.params;
 
-module.exports = { registration, login };
+  userModel
+    .findByIdAndDelete({ _id: id })
+    .then((result) => {
+      res.status(200).json(result);
+      console.log(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
+
+module.exports = { registration, login, getUsers, deleteUser };
