@@ -68,7 +68,7 @@ const softDel = (req, res) => {
 //getting only existing and uncompleted tasks
 const tasksByUserId = (req, res) => {
   taskModel
-    .find({ userId: id, isCompleted: false, isDeleted: false })
+    .find({ userId: req.addedToken.id, isCompleted: false, isDeleted: false })
     .then((result) => {
       res.status(200).json(result);
       console.log(result);
@@ -94,7 +94,7 @@ const getCompTasks = (req, res) => {
 //getting deleted tasks
 const getDelTasks = (req, res) => {
   taskModel
-    .find({ userId: id, isDeleted: true })
+    .find({ userId: req.addedToken.id, isDeleted: true })
     .then((result) => {
       res.status(200).json(result);
       console.log(result);
