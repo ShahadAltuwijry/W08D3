@@ -11,7 +11,7 @@ const {
   getCompTasks,
 } = require("./../controller/task");
 
-tasksRouter.post("/task/:", authentication, createTask); //posting
+tasksRouter.post("/task", authentication, createTask); //posting
 tasksRouter.put("/completed/:d", authentication, completed); //marking as complete
 tasksRouter.put("/delete/:id", authentication, softDel); //soft deleting
 tasksRouter.get("/Tasks", authentication, tasksByUserId); //get uncomp undel user tasks
