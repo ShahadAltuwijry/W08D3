@@ -7,15 +7,14 @@ const SALT = Number(process.env.SALT);
 const secret = process.env.SECRETKEY;
 
 const registration = async (req, res) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
 
-  const savedEmail = email.toLowerCase();
+  // const savedEmail = email.toLowerCase();
   const savedPassword = await bcrypt.hash(password, SALT);
 
   const newUser = new userModel({
-    email: savedEmail,
+    email: email,
     password: savedPassword,
-    role,
   });
   newUser
     .save()
@@ -31,12 +30,13 @@ const login = (req, res) => {
   const { email, password } = req.body;
 
   userModel.findOne({ email }).then(async (result) => {
-    // console.log(result, "res");
     if (result) {
       if (email === result.email) {
         const savedPassword = await bcrypt.compare(password, result.password);
-        const payload = { role: result.role };
+        const payload = { role: result.role, id: result._id };
         const token = jwt.sign(payload, secret);
+
+        // console.log(req.addedToken, "req");
 
         if (savedPassword) {
           res.status(200).json({ result, token });
@@ -57,7 +57,7 @@ const getUsers = (req, res) => {
     .find({})
     .then((result) => {
       res.status(200).json(result);
-      console.log(result);
+      // console.log(result);
     })
     .catch((err) => {
       res.send(err);
@@ -71,7 +71,7 @@ const deleteUser = (req, res) => {
     .findByIdAndDelete({ _id: id })
     .then((result) => {
       res.status(200).json(result);
-      console.log(result);
+      // console.log(result);
     })
     .catch((err) => {
       res.send(err);

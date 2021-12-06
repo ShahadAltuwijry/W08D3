@@ -11,7 +11,7 @@ const {
 
 userRouter.post("/regster", registration);
 userRouter.post("/login", login);
-userRouter.get("/users", authentication, authorization, getUsers);
+userRouter.get("/users", getUsers);
 userRouter.delete("/delUser/:id", authentication, authorization, deleteUser);
 
 module.exports = userRouter;

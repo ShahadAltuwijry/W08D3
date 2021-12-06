@@ -1,22 +1,38 @@
 const express = require("express");
 const authentication = require("./../middlewares/authentication");
+const authorization = require("./../middlewares/authorization");
 const tasksRouter = express.Router();
 const {
   createTask,
-  completed,
+  check,
   softDel,
   tasksByUserId,
   allTasksByUserId,
   getDelTasks,
   getCompTasks,
+  //admin's
+  getAll,
+  deleteAnyTask,
+  getUserTasks,
 } = require("./../controller/task");
 
-tasksRouter.post("/task/:", authentication, createTask); //posting
-tasksRouter.put("/completed/:d", authentication, completed); //marking as complete
-tasksRouter.put("/delete/:id", authentication, softDel); //soft deleting
-tasksRouter.get("/Tasks", authentication, tasksByUserId); //get uncomp undel user tasks
+//user routes
+tasksRouter.post("/task/:id", createTask); //posting
 tasksRouter.get("/allTasks", authentication, allTasksByUserId); //get user existing uncompleted tasks
-tasksRouter.get("/delTasks", authentication, getDelTasks); //get user deleted tasks
+tasksRouter.put("/check/:id", check); //marking as complete
+tasksRouter.delete("/delete/:id", softDel); //soft deleting
+tasksRouter.get("/Tasks", authentication, tasksByUserId); //get uncomp undel user tasks
 tasksRouter.get("/compTasks", authentication, getCompTasks); //get all completed tasks
+tasksRouter.get("/delTasks", authentication, getDelTasks); //get user deleted tasks
+
+//admin routes
+tasksRouter.get("/adminAll", authentication, authorization, getAll);
+tasksRouter.delete(
+  "/adminDel/:id",
+  authentication,
+  authorization,
+  deleteAnyTask
+);
+tasksRouter.get("/adminGet", authentication, authorization, getUserTasks);
 
 module.exports = tasksRouter;
