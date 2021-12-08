@@ -1,5 +1,6 @@
-[erDialog]("./Untitled Diagram.drawio")
-<img src="./Untitled Diagram.drawio">
+# Project ER Diagram
+![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/92247858/145216340-0a76a170-4f2c-45f3-b92f-f342fcf989e1.png)
+
 # To Do CRUD operation
 
 In this project we worked on making the basic codes of a full To Do list CRUD opration, plus registration & loging in.
