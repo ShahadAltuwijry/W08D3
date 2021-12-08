@@ -1,5 +1,9 @@
-# Project ER Diagram
+# Project UML Diagram
 ![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/92247858/145216340-0a76a170-4f2c-45f3-b92f-f342fcf989e1.png)
+
+# Project ER Diagram
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/92247858/145216470-4411ebdc-5657-43e0-aee6-8d4e492e2950.png)
+
 
 # To Do CRUD operation
 
