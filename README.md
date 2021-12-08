@@ -1,4 +1,5 @@
-[er dialog](file:///D:/Untitled%20Diagram.drawio%20(1).svg)
+![er dialog](<file:///D:/Untitled%20Diagram.drawio%20(1).svg>)
+<img src=".C:\Users\m_m-5\Desktop\T1000\homework_labs\W08D3\Untitled Diagram.drawio (1).svg" alt="er dialog">
 
 # To Do CRUD operation
 
@@ -9,7 +10,7 @@ There's two roles for registration:
 - User.
 
   both roles can create, read, update and delete their own added Tasks.
-  Whats differante about this project is that Admins can see all Users data (<ins>user data</ins> ***not*** tasks) and can also Delete any user using the UserId.
+  Whats differante about this project is that Admins can see all Users data (<ins>user data</ins> **_not_** tasks) and can also Delete any user using the UserId.
 
 # Registration & login Authentication
 
