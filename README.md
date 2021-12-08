@@ -1,3 +1,5 @@
+[er dialog](file:///D:/Untitled%20Diagram.drawio%20(1).svg)
+
 # To Do CRUD operation
 
 In this project we worked on making the basic codes of a full To Do list CRUD opration, plus registration & loging in.

@@ -22,17 +22,17 @@ tasksRouter.get("/allTasks", authentication, allTasksByUserId); //get user exist
 tasksRouter.put("/check/:id", check); //marking as complete
 tasksRouter.delete("/delete/:id", softDel); //soft deleting
 tasksRouter.get("/Tasks", authentication, tasksByUserId); //get uncomp undel user tasks
-tasksRouter.get("/compTasks", authentication, getCompTasks); //get all completed tasks
+tasksRouter.get("/completed", authentication, getCompTasks); //get all completed tasks
 tasksRouter.get("/delTasks", authentication, getDelTasks); //get user deleted tasks
 
 //admin routes
-tasksRouter.get("/adminAll", authentication, authorization, getAll);
+tasksRouter.get("/adAll", authentication, authorization, getAll);
 tasksRouter.delete(
-  "/adminDel/:id",
+  "/adDel/:id",
   authentication,
   authorization,
   deleteAnyTask
 );
-tasksRouter.get("/adminGet", authentication, authorization, getUserTasks);
+tasksRouter.get("/adGet", authentication, authorization, getUserTasks);
 
 module.exports = tasksRouter;
