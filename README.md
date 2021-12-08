@@ -1,5 +1,4 @@
-[erDialog]("./Untitled Diagram.drawio")
-<img src="./Untitled Diagram.drawio">
+
 # To Do CRUD operation
 
 In this project we worked on making the basic codes of a full To Do list CRUD opration, plus registration & loging in.
