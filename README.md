@@ -1,5 +1,3 @@
-![er dialog](<file:///D:/Untitled%20Diagram.drawio%20(1).svg>)
-<img src=".C:\Users\m_m-5\Desktop\T1000\homework_labs\W08D3\Untitled Diagram.drawio (1).svg" alt="er dialog">
 
 # To Do CRUD operation
 
