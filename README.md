@@ -1,9 +1,3 @@
-# Project UML Diagram
-![Untitled Diagram drawio (2)](https://user-images.githubusercontent.com/92247858/145217767-20ff22c4-e2c7-41f9-a9d0-bc527cde4624.png)
-
-# Project ER Diagram
-![Untitled Diagram drawio](https://user-images.githubusercontent.com/92247858/145216470-4411ebdc-5657-43e0-aee6-8d4e492e2950.png)
-
 
 # To Do CRUD operation
 
@@ -15,6 +9,13 @@ There's two roles for registration:
 
   both roles can create, read, update and delete their own added Tasks.
   Whats differante about this project is that Admins can see all Users data (<ins>user data</ins> **_not_** tasks) and can also Delete any user using the UserId.
+
+# Project UML Diagram
+![Untitled Diagram drawio (2)](https://user-images.githubusercontent.com/92247858/145217767-20ff22c4-e2c7-41f9-a9d0-bc527cde4624.png)
+
+# Project ER Diagram
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/92247858/145216470-4411ebdc-5657-43e0-aee6-8d4e492e2950.png)
+
 
 # Registration & login Authentication
 
